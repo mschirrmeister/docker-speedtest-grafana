@@ -1,4 +1,4 @@
-FROM debian:11-slim AS get-speedtest
+FROM debian:12-slim AS get-speedtest
 RUN apt-get update && apt-get install -y curl gnupg apt-transport-https dirmngr lsb-release
 RUN apt-get install -y debian-archive-keyring &> /dev/null
 RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
