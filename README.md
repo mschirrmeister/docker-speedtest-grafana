@@ -1,6 +1,6 @@
 # docker-speedtest-grafana
 
-![](https://i.imgur.com/z3glk2W.png)
+![](https://imgur.com/a/XWtOO4q)
 
 Docker setup consisting out of Grafana incl. a pre-configured dashboard, InfluxDB and a [speedtest.net CLI test](https://www.speedtest.net/apps/cli) runner.
 
@@ -10,7 +10,7 @@ Docker setup consisting out of Grafana incl. a pre-configured dashboard, InfluxD
 2. Clone this repository:
 
 ```shell
-git clone https://github.com/iamk3/docker-speedtest-grafana
+git clone https://github.com/mschirrmeister/docker-speedtest-grafana
 ```
 
 3. Create a copy of the sample `.env` file and adjust it at will:
@@ -24,6 +24,12 @@ cp .env.sample .env
 ```shell
 docker-compose up -d
 ```
+
+#### Note
+
+If you experience performance issues, like you do not get the speed that you expect, or if you run it outside of Docker, then it might be related to the default Docker `bridge` network. If that is the case have a look at the file `docker-compose-macvlan.yml`. You have to change the network to your `macvlan` network, or create one if you do not already have one. Only the **speedtest** container needs an ip from your network. 
+
+    docker compose -f docker-compose-macvlan.yml up -d
 
 ## Configuration
 
